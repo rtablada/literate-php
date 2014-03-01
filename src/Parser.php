@@ -43,7 +43,6 @@ class Parser
 		$return = '';
 		$multiLineComment = false;
 		$lines = preg_split('/[\r\n]/', $string);
-		var_dump($lines);
 
 		foreach ($lines as $key => $line) {
 			if (preg_match('/#\s.*/', $line)) {
