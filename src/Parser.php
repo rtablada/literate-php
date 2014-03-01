@@ -16,21 +16,20 @@ class Parser
 
 	public function breakParts($string)
 	{
-		$parts = preg_split('/[\n]*(```|~~~).*/', $string);
-
+		$parts = preg_split('/[\n]+(```|~~~).*[\n]/', $string);
 		$string = '';
-
-		// var_dump($parts); die();
 
 		foreach ($parts as $key => $part)
 		{
 			if ($key%2 === 0) {
 				$part = $this->removeLists($part);
 				$part = $this->parseComments($part);
+			} else {
+				$part = "{$part}\n\n";
 			}
 
 			if ($part != '') {
-				$string .= "{$part}\n";
+				$string .= "{$part}";
 			}
 		}
 
@@ -57,7 +56,7 @@ class Parser
 		}
 
 		if ($multiLineComment) {
-			$return .= "\n */";
+			$return .= "\n */\n";
 		}
 
 		return $return;
