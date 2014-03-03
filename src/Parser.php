@@ -25,7 +25,7 @@ class Parser
 				$part = $this->removeLists($part);
 				$part = $this->parseComments($part);
 			} else {
-				$part = "{$part}\n\n";
+				$part = $this->parseCode($part);
 			}
 
 			if ($part != '') {
@@ -60,5 +60,12 @@ class Parser
 		}
 
 		return $return;
+	}
+
+	public function parseCode($string)
+	{
+		$string = str_replace('<?php', '', $string);
+
+		return "{$string}\n\n";
 	}
 }
