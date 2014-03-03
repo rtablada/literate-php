@@ -64,7 +64,7 @@ class Parser
 
 	public function parseCode($string)
 	{
-		$string = str_replace('<?php', '', $string);
+		$string = preg_replace('/<\?php\s/', '', $string);
 
 		return "{$string}\n\n";
 	}
