@@ -28,8 +28,8 @@ class Parser
      * comments, you can use the - (minus) symbol instead of the star within
      * your Markdown code.
      * 
-     * @param type $string
-     * @return type
+     * @param string $string
+     * @return string
      */
 	public function removeLists($string)
 	{
